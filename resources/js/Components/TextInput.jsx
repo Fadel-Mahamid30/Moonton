@@ -1,6 +1,35 @@
 import { forwardRef, useEffect, useRef } from 'react';
+import PropTypes from "prop-types";
 
-export default forwardRef(function TextInput({ type = 'text', className = '', isFocused = false, ...props }, ref) {
+forwardRef.PropTypes = {
+    type: PropTypes.oneOf(["text", "email", "password", "number", "file"]),
+    name: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    className: PropTypes.string,
+    variant: PropTypes.oneOf(["primary", "error", "primary-outline"]),
+    autoComplete: PropTypes.string,
+    required: PropTypes.bool,
+    isFocused: PropTypes.bool,
+    handleChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    isError: PropTypes.bool
+}
+
+export default forwardRef(function TextInput({ 
+    type = 'text', 
+    className = '', 
+    isFocused = false, 
+    defaultValue,
+    name,
+    id,
+    variant = "primary",
+    autoComplete,
+    required,
+    handleChange,
+    placeholder,
+    isError,
+    ...props }, ref) {
+
     const input = ref ? ref : useRef();
 
     useEffect(() => {
@@ -15,10 +44,16 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
                 {...props}
                 type={type}
                 className={
-                    'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ' +
-                    className
+                    `rounded-2xl bg-form-bg py-[13px] px-7 w-full ${isError && "input-error"} input-${variant} di ${className}`
                 }
+                onChange={(e) => handleChange(e)}
+                required={required}
+                autoComplete={autoComplete}
+                value={defaultValue}
                 ref={input}
+                placeholder={placeholder}
+                name={name}
+                id={id}
             />
         </div>
     );
