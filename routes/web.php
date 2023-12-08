@@ -25,7 +25,7 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/prototype/login');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -38,6 +38,15 @@ Route::prefix('prototype')->name("prototype.")->group(function () {
     Route::get('/register', function () {
         return Inertia::render("Prototype/Register");
     })->name("register");
+    Route::get('/dashboard', function () {
+        return Inertia::render("Prototype/Dashboard");
+    })->name("dashboard");
+    Route::get('/subscriptionplan', function () {
+        return Inertia::render("Prototype/SubscriptionPlan");
+    })->name("subscriptionplan");
+    Route::get('/movie/{slug}', function () {
+        return Inertia::render("Prototype/Movie/Show");
+    })->name("movie.show");
 });
 
 Route::middleware('auth')->group(function () {
