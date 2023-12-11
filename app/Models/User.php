@@ -3,11 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\UserSubscription;
 
 class User extends Authenticatable
 {
@@ -42,4 +46,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getIsActiveAttribute() {
+        if (!$this->LastActiveUserSubscription) {
+            return false;
+        }
+
+        $dataNow = Carbon::now();
+        $dataExperied = Carbon::create($this->LastActiveUserSubscription->experied_date);
+        return $dataNow->lessThanOrEqualTo($dataExperied);
+    }
+
+    /**
+     * Get the LastActiveUserSubscription associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function LastActiveUserSubscription(): HasOne
+    {
+        return $this->hasOne(UserSubscription::class)->where("payment_status", "paid")->latest();
+    }
 }

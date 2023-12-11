@@ -14,7 +14,7 @@ export default function MovieCard ({
     category,
     thumbnail
 }) {
-    return (       
+    return (
         <div className="absolute group overflow-hidden mr-[30px]">
             <img src={thumbnail}
                 className="object-cover rounded-[30px] h-[340px] w-[250px]" alt="" />
@@ -29,7 +29,7 @@ export default function MovieCard ({
                 -translate-x-1/2 z-20 transition ease-in-out duration-500">
                 <img src="/icons/ic_play.svg" className="" width="50" alt="" />
             </div>
-            <Link href={route(`prototype.movie.show`, slug)} className="inset-0 absolute z-50"></Link>
+            <Link href={route(`user.dashboard.movie.show`, slug)} className="inset-0 absolute z-50"></Link>
         </div>
     )
 }
