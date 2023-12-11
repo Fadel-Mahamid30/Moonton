@@ -6,7 +6,8 @@ export default function SubscriptionPlan ({
     price,
     durationInMonth,
     features,
-    isPremium
+    isPremium,
+    onSelectSubscription
 }) {
     return (
         <>
@@ -35,7 +36,7 @@ export default function SubscriptionPlan ({
                     </div>
 
                     {/* <!-- Bottom: CTA Button --> */}
-                    <div>
+                    <div onClick={onSelectSubscription}>
                         <Button type="button" variant="white-outline">
                             <span className="text-base">Start {name}</span>
                         </Button>
@@ -79,10 +80,12 @@ export default function SubscriptionPlan ({
                     </div>
 
                     {/* <!-- Bottom: CTA Button --> */}
-                    <div>
-                        <Button type="button">
-                            <span className="text-base">Start {name}</span>
-                        </Button>
+                    <div onClick={onSelectSubscription}>
+                        <div>
+                            <Button type="button">
+                                <span className="text-base">Start {name}</span>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             )}

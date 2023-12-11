@@ -15,17 +15,15 @@ forwardRef.PropTypes = {
     isError: PropTypes.bool
 }
 
-export default forwardRef(function TextInput({ 
-    type = 'text', 
-    className = '', 
-    isFocused = false, 
-    defaultValue,
+export default forwardRef(function TextInput({
+    type = 'text',
+    className = '',
+    isFocused = false,
     name,
     id,
     variant = "primary",
     autoComplete,
     required,
-    handleChange,
     placeholder,
     isError,
     ...props }, ref) {
@@ -46,10 +44,8 @@ export default forwardRef(function TextInput({
                 className={
                     `rounded-2xl bg-form-bg py-[13px] px-7 w-full ${isError && "input-error"} input-${variant} di ${className}`
                 }
-                onChange={(e) => handleChange(e)}
                 required={required}
                 autoComplete={autoComplete}
-                value={defaultValue}
                 ref={input}
                 placeholder={placeholder}
                 name={name}
