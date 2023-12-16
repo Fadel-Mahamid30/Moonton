@@ -26,6 +26,7 @@ export default forwardRef(function TextInput({
     required,
     placeholder,
     isError,
+    value,
     ...props }, ref) {
 
     const input = ref ? ref : useRef();
@@ -44,6 +45,7 @@ export default forwardRef(function TextInput({
                 className={
                     `rounded-2xl bg-form-bg py-[13px] px-7 w-full ${isError && "input-error"} input-${variant} di ${className}`
                 }
+                defaultValue={value}
                 required={required}
                 autoComplete={autoComplete}
                 ref={input}

@@ -4,6 +4,7 @@
 @import "input.css";
 @import "button.css";
 @import "sidebar.css";
+@import "flashMessage.css";
 
 .flex::before,
 .flex::after {
@@ -28,7 +29,7 @@
     select {
         border-color: transparent;
     }
-    
+
     [type="text"]:focus,
     [type="email"]:focus,
     [type="url"]:focus,

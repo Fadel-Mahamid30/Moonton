@@ -3,7 +3,7 @@ import Topbar from "./Topbar";
 export default function Authenticated({ auth, children }) {
     return (
         <>
-            <div className="mx-auto max-w-screen hidden lg:block">
+            <div className="mx-auto min-h-screen max-w-screen hidden lg:block">
                 {/* STRAT: sidebar */}
                 <Sidebar auth={auth} />
                 {/* END: sidebar */}

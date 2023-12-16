@@ -24,6 +24,8 @@
         "flickity": "^2.3.0",
         "prop-types": "^15.8.1",
         "react-flickity-component": "^4.0.7",
-        "react-player": "^2.13.0"
+        "react-player": "^2.13.0",
+        "sweetalert2": "^11.10.1",
+        "sweetalert2-react-content": "^5.0.7"
     }
 }

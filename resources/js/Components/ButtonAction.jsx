@@ -22,16 +22,17 @@ export default function PrimaryButton({
     children,
     processing,
     variant="primary",
-    sizeWidth="w-full",
     ...props }) {
     return (
         <button
             {...props}
             type={type}
-            className={`rounded-2xl py-[13px] text-center ${sizeWidth} btn-${variant} ${processing && "opacity-30"} ${className}`}
+            className={`rounded-md flex items-center justify-center text-center w-10 h-10 btn-${variant} ${processing && "opacity-30"} ${className}`}
             disabled={processing}
         >
-            {children}
+            <span className="text-2xl flex justify-center">
+                {children}
+            </span>
         </button>
     );
 }
