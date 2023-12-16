@@ -10,6 +10,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MovieController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\User\SubscriptionPlanController;
+use App\Models\Movie;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ use App\Http\Controllers\User\SubscriptionPlanController;
 //     ]);
 // });
 
+// MIDTRANS
+Route::post("midtrans/notification", [SubscriptionPlanController::class, "midtransCallback"]);
+Route::get("cek", [MovieController::class, "cek"]);
 Route::redirect('/', '/login');
 
 Route::middleware(["auth", "role:user"])->prefix("dashboard")->name("user.dashboard.")->group(function () {
