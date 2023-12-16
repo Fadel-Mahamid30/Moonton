@@ -5,7 +5,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Sidebar({ auth }) {
     return (
-        <aside className="fixed z-50 w-[300px] h-full">
+        <aside className="fixed bg-white z-50 w-[300px] h-full">
             <div className="flex flex-col p-[30px] pr-0 border-r border-gray-[#F1F1F1] overflow-y-auto h-full">
                 <a href="/">
                     <img src="/images/moonton.svg" alt="" />

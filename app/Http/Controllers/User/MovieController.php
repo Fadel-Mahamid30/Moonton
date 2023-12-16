@@ -12,9 +12,5 @@ class MovieController extends Controller
         return inertia("User/Dashboard/Movie/Show", [
             "movie" => $movie
         ]);
-
-        // return [
-        //     $movie
-        // ];
     }
 }
